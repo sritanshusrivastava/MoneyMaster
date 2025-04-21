@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoneyMaster - Financial Management</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5f259f;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #5f259f;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #e4d5f9 0%, #c4e0f9 100%);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    .highlight {
+      color: #5f259f;
+      font-size: 70px;
+      font-weight: bold;
+    }
+
+    .hero-heading {
+      font-size: 42px;
+      color: #333;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-subheading {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #4a1e7c;
+    }
+
+    .hero-image {
+      position: relative;
+      max-width: 300px;
+      z-index: 2;
+    }
+
+    .hero-image img {
+      width: 100%;
+    }
+
+    .dot-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(#5f259f20 2px, transparent 2px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    /* Features Cards */
+    .features {
+      padding: 60px 40px;
+    }
+
+    .features-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: #f8f9ff;
+      border-radius: 16px;
+      padding: 30px;
+      flex: 1;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(95, 37, 159, 0.1);
+    }
+
+    .feature-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+    }
+
+    .feature-icon img {
+      width: 100%;
+    }
+
+    .feature-title {
+      font-size: 24px;
+      color: #5f259f;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .arrow-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      color: #5f259f;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .arrow {
+      margin-left: 5px;
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover .arrow {
+      transform: translateX(5px);
+    }
+
+    /* App Features Section */
+    .app-features {
+      padding: 80px 40px;
+      background-color: #fcfcfc;
+    }
+
+    .app-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .app-content {
+      flex: 1;
+    }
+
+    .app-heading {
+      font-size: 48px;
+      color: #5f259f;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .app-tagline {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .app-description {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #ddd;
+      margin: 30px 0;
+    }
+
+    .app-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app-image img {
+      max-width: 100%;
+      border-radius: 20px;
+    }
+
+    /* Indicator dots */
+    .indicator-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 30px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ddd;
+    }
+
+    .dot.active {
+      background-color: #5f259f;
+    }
+
+    /* Modal Login Form */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .login-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+      padding: 2rem;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.show .login-container {
+      transform: translateY(0);
+    }
+
+    .login-header {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-header h2 {
+      color: #5f259f;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      margin-top: 10px;
+    } 
+
+    .login-header p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #4c6ef5;
+      outline: none;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-me input {
+      margin-right: 8px; 
+    }
+
+    .forgot-password a {
+      color: #4c6ef5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .login-button {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #4a1e7c;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .register-link a {
+      color: #4c6ef5;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 24px;
+      color: #777;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: 20px;
+      }
+      
+      .features-container {
+        flex-wrap: wrap;
+      }
+      
+      .feature-card {
+        flex: 0 0 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      
+      .hero-content {
+        margin-bottom: 40px;
+      }
+      
+      .strikethrough, .highlight {
+        font-size: 40px;
+      }
+      
+      .hero-heading {
+        font-size: 32px;
+      }
+      
+      .app-container {
+        flex-direction: column;
+      }
+      
+      .app-content {
+        text-align: center;
+      }
+      
+      .app-heading {
+        font-size: 36px;
+      }
+      
+      .remember-forgot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-card {
+        flex: 0 0 100%;
+      }
+      
+      .app-heading {
+        font-size: 32px;
+      }
+      
+      .app-tagline {
+        font-size: 20px;
+      }
+      
+      .login-container {
+        padding: 1.5rem;
+      }
+
+      .login-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Mobile menu */
+    .mobile-menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #5f259f;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.show {
+      transform: translateY(0);
+    }
+
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .mobile-menu-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .close-menu {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #777;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    /* Dashboard styles (hidden initially) */
+    .dashboard {
+      display: none;
+      padding: 40px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome-message {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .dashboard-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .dashboard-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+    }
+
+    .dashboard-card h3 {
+      color: #5f259f;
+      margin-bottom: 15px;
+    }
+
+    .logout-button {
+      background-color: #f3f3f3;
+      color: #333;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .logout-button:hover {
+      background-color: #e3e3e3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo" id="logo-home">
+      <div style="width: 40px; height: 40px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
+      <span class="logo-text">MoneyMaster</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features">OUR SOLUTIONS</a>
+      <a href="#">CAREERS</a>
+      <a href="#">ABOUT US</a>
+      <a href="#" id="login-link">LOGIN</a>
+      <a href="#">CONTACT US</a>
+      <a href="#">TRUST & SAFETY</a>
+    </div>
+    <button class="mobile-menu-icon">☰</button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <button class="close-menu">×</button>
+    <div class="mobile-menu-links">
+      <a href="#features">OUR SOLUTIONS</a>
+      <a href="#">CAREERS</a>
+      <a href="#">ABOUT US</a>
+      <a href="#" class="mobile-login-link">LOGIN</a>
+      <a href="#">CONTACT US</a>
+      <a href="#">TRUST & SAFETY</a>
+    </div>
+  </div>
+
+  <!-- Main Content Area (Landing Page) -->
+  <div id="landing-page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="dot-pattern"></div>
+      <div class="hero-content">
+        <div>
+          <span class="strikethrough"></span> <span class="highlight">FINANCIAL ANALYSIS</span>
+        </div>
+        <h1 class="hero-heading">Accept payments with Financial Analysis</h1>
+        <p class="hero-subheading">Sign up for Better Financial Management</p>
+        <button class="cta-button" id="get-started-btn">Get Started</button>
+      </div>
+      <div class="hero-image">
+        <img src="moneymaster.jpeg" alt="MoneyMaster App Interface">
+      </div>
+      <div class="indicator-dots">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <!-- Features Cards -->
+    <section class="features" id="features">
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 100 100">
+              <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="#e6e6ff" />
+              <path d="M50 10 L90 30 L90 70 L50 90 L50 50 Z" fill="#5f259f" />
+              <path d="M50 10 L10 30 L10 70 L50 90 L50 50 Z" fill="#9370db" />
+              <circle cx="50" cy="50" r="12" fill="#ff9e80" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Transaction</h3>
+          <div class="arrow-link">
+            Learn more <span class="arrow"></span>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 100 100">
+              <rect x="20" y="30" width="60" height="45" rx="5" fill="#ff7066" />
+              <rect x="25" y="25" width="50" height="10" rx="2" fill="#ff8a80" />
+              <rect x="30" y="50" width="15" height="15" fill="#ffcc80" />
+              <rect x="55" y="50" width="15" height="15" fill="#ffcc80" />
+              <rect x="30" y="50" width="15" height="5" fill="#ffb74d" />
+              <rect x="55" y="50" width="15" height="5" fill="#ffb74d" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Financial Management</h3>
+          <div class="arrow-link">
+            Learn more <span class="arrow"></span>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 100 100">
+              <circle cx="40" cy="50" r="25" fill="#ffb74d" />
+              <text x="40" y="55" font-size="25" text-anchor="middle" fill="#fff">₹</text>
+              <rect x="55" y="30" width="30" height="15" rx="2" fill="#80deea" />
+              <rect x="55" y="55" width="30" height="15" rx="2" fill="#80deea" />
+              <rect x="70" y="50" width="15" height="5" fill="#ffcc80" />
+              <rect x="70" y="45" width="15" height="5" fill="#ffcc80" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Expense Tracking</h3>
+          <div class="arrow-link">
+            Learn more <span class="arrow"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Features Section -->
+    <section class="app-features">
+      <div class="app-container">
+        <div class="app-content">
+          <h2 class="app-heading">Simple, Fast & Secure</h2>
+          <p class="app-tagline">One app for all things money.</p>
+          <p class="app-description">Pay bills, recharge, send money, buy gold, invest and Manage your Money.</p>
+          
+          <div class="divider"></div>
+          
+          <p class="app-tagline">Pay whenever you like, with Proper Financial Analysis.</p>
+          <p class="app-description">Choose from options like UPI, the MoneyMaster personalized analysis.</p>
+        </div>
+        <div class="app-image">
+          <img src="moneymaster.jpeg" alt="MoneyMaster App Interface">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Dashboard (hidden initially) -->
+  <div id="dashboard" class="dashboard">
+    <div class="dashboard-header">
+      <h2 class="welcome-message">Welcome, <span id="user-name">User</span>!</h2>
+      <button class="logout-button" id="logout-btn">Logout</button>
+    </div>
+    <div class="dashboard-content">
+      <div class="dashboard-card">
+        <h3>Your Balance</h3>
+        <p>Rs 2,345.67</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Recent Transactions</h3>
+        <p>Shopping - RS 45.99</p>
+        <p>Utilities - Rs 87.50</p>
+        <p>Deposit - Rs 500.00</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Financial Goals</h3>
+        <p>Vacation: 45% complete</p>
+        <p>Emergency Fund: 70% complete</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="login-modal">
+    <div class="login-container">
+      <button class="close-modal" id="close-modal">×</button>
+      <div class="login-header">
+        <div class="logo">
+          <div style="width: 40px; height: 40px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
+          <span class="logo-text">MoneyMaster</span>
+        </div>
+        <h2>Welcome</h2>
+        <p>Please enter your credentials to login</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Email or Username</label>
+          <input type="text" id="email" name="email" placeholder="Enter your email or username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="remember-forgot">
+          <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember me</label>
+          </div>
+          <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+        <button type="submit" class="login-button">Log In</button>
+      </form>
+      <div class="register-link">
+        Don't have an account? <a href="#" id="register-link">Register here</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DOM Elements
+    const loginLink = document.getElementById('login-link');
+    const mobileLoginLink = document.querySelector('.mobile-login-link');
+    const loginModal = document.getElementById('login-modal');
+    const closeModal = document.getElementById('close-modal');
+    const loginForm = document.getElementById('login-form');
+    const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const closeMenu = document.querySelector('.close-menu');
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const landingPage = document.getElementById('landing-page');
+    const dashboard = document.getElementById('dashboard');
+    const logoutBtn = document.getElementById('logout-btn');
+    const userName = document.getElementById('user-name');
+    const logoHome = document.getElementById('logo-home');
+    const registerLink = document.getElementById('register-link');
+
+    // Open login modal
+    function openLoginModal() {
+      loginModal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close login modal
+    function closeLoginModal() {
+      loginModal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('show');
+    }
+
+    // Show dashboard (after login)
+    function showDashboard(username) {
+      landingPage.style.display = 'none';
+      dashboard.style.display = 'block';
+      userName.textContent = username || 'User';
+      closeLoginModal();
+    }
+
+    // Show landing page (logout)
+    function showLandingPage() {
+      dashboard.style.display = 'none';
+      landingPage.style.display = 'block';
+    }
+
+    // Event Listeners
+    loginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLoginModal();
+    });
+
+    if (mobileLoginLink) {
+      mobileLoginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLoginModal();
+        mobileMenu.classList.remove('show');
+      });
+    }
+
+    closeModal.addEventListener('click', closeLoginModal);
+
+    // Close modal when clicking outside
+    loginModal.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        closeLoginModal();
+      }
+    });
+
+    // Login form submission
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Simple validation - in real app, this would go to a server
+      if (email && password) {
+        // Extract username from email
+        const username = email.includes('@') ? email.split('@')[0] : email;
+        showDashboard(username);
+      }
+    });
+
+    // Mobile menu
+    if (mobileMenuIcon) {
+      mobileMenuIcon.addEventListener('click', toggleMobileMenu);
+    }
+
+    if (closeMenu) {
+      closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+      });
+    }
+
+    // Get Started button
+    getStartedBtn.addEventListener('click', openLoginModal);
+
+    // Logout button
+    logoutBtn.addEventListener('click', showLandingPage);
+
+    // Logo home button
+    logoHome.addEventListener('click', showLandingPage);
+
+    // Register link (for demo, just shows login form)
+    registerLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Registration functionality would be implemented here!');
+    });
+
+    // Indicator dots functionality
+    const dots = document.querySelectorAll('.dot');
+    let currentDot = 1; // Start with the second dot active
+
+    function updateActiveDot() {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentDot);
+      });
+      currentDot = (currentDot + 1) % dots.length;
+    }
+
+    // Auto-rotate slides every 5 seconds
+    setInterval(updateActiveDot, 5000);
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLoginModal();
+        mobileMenu.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
