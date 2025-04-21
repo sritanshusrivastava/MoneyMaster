@@ -317,6 +317,7 @@
       padding: 2rem;
       transform: translateY(-20px);
       transition: transform 0.3s ease;
+      position: relative;
     }
 
     .modal.show .login-container {
@@ -442,198 +443,6 @@
       border: none;
     }
 
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .nav-links {
-        gap: 20px;
-      }
-      
-      .features-container {
-        flex-wrap: wrap;
-      }
-      
-      .feature-card {
-        flex: 0 0 calc(50% - 20px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 15px 20px;
-      }
-      
-      .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu-icon {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
-      }
-      
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 20px;
-      }
-      
-      .hero-content {
-        margin-bottom: 40px;
-      }
-      
-      .strikethrough, .highlight {
-        font-size: 40px;
-      }
-      
-      .hero-heading {
-        font-size: 32px;
-      }
-      
-      .app-container {
-        flex-direction: column;
-      }
-      
-      .app-content {
-        text-align: center;
-      }
-      
-      .app-heading {
-        font-size: 36px;
-      }
-      
-      .remember-forgot {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .feature-card {
-        flex: 0 0 100%;
-      }
-      
-      .app-heading {
-        font-size: 32px;
-      }
-      
-      .app-tagline {
-        font-size: 20px;
-      }
-      
-      .login-container {
-        padding: 1.5rem;
-      }
-
-      .login-header h1 {
-        font-size: 1.5rem;
-      }
-    }
-
-    /* Mobile menu */
-    .mobile-menu-icon {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: #5f259f;
-    }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: white;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 99;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-    }
-
-    .mobile-menu.show {
-      transform: translateY(0);
-    }
-
-    .mobile-menu-links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .mobile-menu-links a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      font-size: 16px;
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .close-menu {
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: #777;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-    }
-
-    /* Dashboard styles (hidden initially) */
-    .dashboard {
-      display: none;
-      padding: 40px;
-    }
-
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    .welcome-message {
-      font-size: 24px;
-      color: #333;
-    }
-
-    .dashboard-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .dashboard-card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      padding: 20px;
-    }
-
-    .dashboard-card h3 {
-      color: #5f259f;
-      margin-bottom: 15px;
-    }
-
-    .logout-button {
-      background-color: #f3f3f3;
-      color: #333;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .logout-button:hover {
-      background-color: #e3e3e3;
-    }
-
-    
     /* Enhanced Mobile Menu Styles */
     .mobile-menu-icon {
       display: none;
@@ -642,9 +451,6 @@
       font-size: 24px;
       color: #5f259f;
       cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 20px;
       z-index: 101;
     }
     
@@ -720,8 +526,58 @@
       opacity: 1;
     }
 
-     /* Footer Section */
-     .footer {
+    /* Dashboard styles (hidden initially) */
+    .dashboard {
+      display: none;
+      padding: 40px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .welcome-message {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .dashboard-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .dashboard-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+    }
+
+    .dashboard-card h3 {
+      color: #5f259f;
+      margin-bottom: 15px;
+    }
+
+    .logout-button {
+      background-color: #f3f3f3;
+      color: #333;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .logout-button:hover {
+      background-color: #e3e3e3;
+    }
+
+    /* Footer Section */
+    .footer {
       background-color: #232333;
       color: #fff;
       padding: 60px 40px 30px;
@@ -793,22 +649,95 @@
     }
     
     /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: 20px;
+      }
+      
+      .features-container {
+        flex-wrap: wrap;
+      }
+      
+      .feature-card {
+        flex: 0 0 calc(50% - 20px);
+      }
+    }
+
     @media (max-width: 768px) {
+      .navbar {
+        position: relative;
+        justify-content: center;
+        padding: 15px 20px;
+      }
+      
       .nav-links {
         display: none;
+      }
+      
+      .logo {
+        margin-right: auto;
       }
       
       .mobile-menu-icon {
         display: block;
       }
       
-      .navbar {
-        position: relative;
-        justify-content: center;
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
       }
       
-      .logo {
-        margin-right: 60px; /* Make space for the menu icon */
+      .hero-content {
+        margin-bottom: 40px;
+      }
+      
+      .strikethrough, .highlight {
+        font-size: 40px;
+      }
+      
+      .hero-heading {
+        font-size: 32px;
+      }
+      
+      .app-container {
+        flex-direction: column;
+      }
+      
+      .app-content {
+        text-align: center;
+      }
+      
+      .app-heading {
+        font-size: 36px;
+      }
+      
+      .remember-forgot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-card {
+        flex: 0 0 100%;
+      }
+      
+      .app-heading {
+        font-size: 32px;
+      }
+      
+      .app-tagline {
+        font-size: 20px;
+      }
+      
+      .login-container {
+        padding: 1.5rem;
+      }
+
+      .login-header h1 {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -841,70 +770,12 @@
       <a href="#features">OUR SOLUTIONS</a>
       <a href="#">CAREERS</a>
       <a href="#">ABOUT US</a>
-      <a href="#" class="mobile-login-link">LOGIN</a>
+      <a href="#" id="mobile-login-link">LOGIN</a>
       <a href="#">CONTACT US</a>
       <a href="#">TRUST & SAFETY</a>
     </div>
   </div>
 
-  <!-- Rest of your HTML remains the same -->
-  
-  <script>
-    // Existing script content
-    
-    // Enhanced Mobile Menu Functionality
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenu = document.getElementById('close-menu');
-    const menuOverlay = document.getElementById('menu-overlay');
-    const mobileLoginLink = document.querySelector('.mobile-login-link');
-    
-    function openMobileMenu() {
-      mobileMenu.classList.add('show');
-      menuOverlay.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('show');
-      menuOverlay.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-    
-    menuToggle.addEventListener('click', openMobileMenu);
-    closeMenu.addEventListener('click', closeMobileMenu);
-    menuOverlay.addEventListener('click', closeMobileMenu);
-    
-    // Close mobile menu when clicking a link
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    });
-    
-    // Mobile login link
-    mobileLoginLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeMobileMenu();
-      openLoginModal();
-    });
-    
-    // Close mobile menu with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMobileMenu();
-      }
-    });
-    
-    // Rest of your script remains the same
-  </script>
-</body>
-</html>
-  </style>
-</head>
-<body>
-  
   <!-- Main Content Area (Landing Page) -->
   <div id="landing-page">
     <!-- Hero Section -->
@@ -1000,91 +871,90 @@
         </div>
       </div>
     </section>
-  </div>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="app-features">
-      <div class="app-container">
-        <div class="app-content">
-          <h2 class="app-heading">What Our Users Say</h2>
-          <p class="app-description">"MoneyMaster has completely transformed how I manage my finances. The analytics are insightful and the interface is so intuitive!"</p>
-          <p style="font-weight: bold; color: #5f259f;">- Priya M., Software Engineer</p>
-          
-          <div class="divider"></div>
-          
-          <p class="app-description">"I've tried many financial apps, but none compare to the comprehensive features of MoneyMaster. Their expense tracking has helped me save over 15% of my income."</p>
-          <p style="font-weight: bold; color: #5f259f;">- Rahul K., Small Business Owner</p>
-        </div>
-        <div class="app-image">
-          <div class="indicator-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="app-features">
+        <div class="app-container">
+          <div class="app-content">
+            <h2 class="app-heading">What Our Users Say</h2>
+            <p class="app-description">"MoneyMaster has completely transformed how I manage my finances. The analytics are insightful and the interface is so intuitive!"</p>
+            <p style="font-weight: bold; color: #5f259f;">- Priya M., Software Engineer</p>
+            
+            <div class="divider"></div>
+            
+            <p class="app-description">"I've tried many financial apps, but none compare to the comprehensive features of MoneyMaster. Their expense tracking has helped me save over 15% of my income."</p>
+            <p style="font-weight: bold; color: #5f259f;">- Rahul K., Small Business Owner</p>
+          </div>
+          <div class="app-image">
+            <div class="indicator-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer Section -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-column">
-        <h3>MoneyMaster</h3>
-        <ul class="footer-links">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Products</h3>
-        <ul class="footer-links">
-          <li><a href="#">Personal Finance</a></li>
-          <li><a href="#">Business Solutions</a></li>
-          <li><a href="#">Investment Tracking</a></li>
-          <li><a href="#">Tax Management</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Support</h3>
-        <ul class="footer-links">
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Security</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Connect With Us</h3>
-        <div class="social-links">
-          <a href="#" class="social-icon">f</a>
-          <a href="#" class="social-icon">in</a>
-          <a href="#" class="social-icon">t</a>
-          <a href="#" class="social-icon">ig</a>
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>MoneyMaster</h3>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
         </div>
-        <p style="margin-top: 20px; font-size: 14px; color: #aaa;">
-          Download our app:
-        </p>
-        <div style="display: flex; gap: 10px; margin-top: 10px;">
-          <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">App Store</a>
-          <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">Google Play</a>
+        <div class="footer-column">
+          <h3>Products</h3>
+          <ul class="footer-links">
+            <li><a href="#">Personal Finance</a></li>
+            <li><a href="#">Business Solutions</a></li>
+            <li><a href="#">Investment Tracking</a></li>
+            <li><a href="#">Tax Management</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">t</a>
+            <a href="#" class="social-icon">ig</a>
+          </div>
+          <p style="margin-top: 20px; font-size: 14px; color: #aaa;">
+            Download our app:
+          </p>
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">App Store</a>
+            <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">Google Play</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
-      <div style="margin-top: 10px;">
-        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
-        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Terms of Service</a>
-        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Cookie Policy</a>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
+        <div style="margin-top: 10px;">
+          <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+          <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+          <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Cookie Policy</a>
+        </div>
       </div>
-    </div>
-  </footer>
-</div>
+    </footer>
+  </div>
 
   <!-- Dashboard (hidden initially) -->
   <div id="dashboard" class="dashboard">
@@ -1098,15 +968,28 @@
         <p>Rs 2,345.67</p>
       </div>
       <div class="dashboard-card">
-        <h3>Recent Transactions</h3>
-        <p>Shopping - RS 45.99</p>
-        <p>Utilities - Rs 87.50</p>
-        <p>Deposit - Rs 500.00</p>
-      </div>
-      <div class="dashboard-card">
         <h3>Financial Goals</h3>
         <p>Vacation: 45% complete</p>
         <p>Emergency Fund: 70% complete</p>
+        <p>New Car: 25% complete</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Budget Overview</h3>
+        <p>Monthly Budget: Rs 15,000</p>
+        <p>Spent: Rs 8,450</p>
+        <p>Remaining: Rs 6,550</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Investment Portfolio</h3>
+        <p>Stocks: Rs 12,500</p>
+        <p>Mutual Funds: Rs 25,000</p>
+        <p>Fixed Deposits: Rs 50,000</p>
+      </div>
+      <div class="dashboard-card">
+        <h3>Quick Actions</h3>
+        <button class="cta-button" style="margin: 10px 0; width: 100%;">Add Transaction</button>
+        <button class="cta-button" style="margin: 10px 0; width: 100%; background-color: #4CAF50;">Transfer Money</button>
+        <button class="cta-button" style="margin: 10px 0; width: 100%; background-color: #2196F3;">Pay Bills</button>
       </div>
     </div>
   </div>
@@ -1116,171 +999,121 @@
     <div class="login-container">
       <button class="close-modal" id="close-modal">×</button>
       <div class="login-header">
-        <div class="logo">
-          <div style="width: 40px; height: 40px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
-          <span class="logo-text">MoneyMaster</span>
-        </div>
-        <h2>Welcome</h2>
-        <p>Please enter your credentials to login</p>
+        <div style="width: 50px; height: 50px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
+        <h2>Welcome Back</h2>
+        <p>Please login to your account</p>
       </div>
       <form id="login-form">
         <div class="form-group">
-          <label for="email">Email or Username</label>
-          <input type="text" id="email" name="email" placeholder="Enter your email or username" required>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <input type="password" id="password" placeholder="Enter your password" required>
         </div>
         <div class="remember-forgot">
           <div class="remember-me">
-            <input type="checkbox" id="remember" name="remember">
+            <input type="checkbox" id="remember">
             <label for="remember">Remember me</label>
           </div>
           <div class="forgot-password">
-            <a href="#">Forgot password?</a>
+            <a href="#">Forgot Password?</a>
           </div>
         </div>
-        <button type="submit" class="login-button">Log In</button>
+        <button type="submit" class="login-button">Login</button>
+        <div class="register-link">
+          Don't have an account? <a href="#">Register Now</a>
+        </div>
       </form>
-      <div class="register-link">
-        Don't have an account? <a href="#" id="register-link">Register here</a>
-      </div>
     </div>
   </div>
 
   <script>
     // DOM Elements
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const closeMenuBtn = document.getElementById('close-menu');
     const loginLink = document.getElementById('login-link');
-    const mobileLoginlink = document.querySelector('.mobile-login-link');
+    const mobileLoginLink = document.getElementById('mobile-login-link');
     const loginModal = document.getElementById('login-modal');
-    const closeModal = document.getElementById('close-modal');
+    const closeModalBtn = document.getElementById('close-modal');
     const loginForm = document.getElementById('login-form');
-    const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-    const mobilemenu = document.querySelector('.mobile-menu');
-    const closemenu = document.querySelector('.close-menu');
     const getStartedBtn = document.getElementById('get-started-btn');
     const landingPage = document.getElementById('landing-page');
     const dashboard = document.getElementById('dashboard');
+    const logoHome = document.getElementById('logo-home');
     const logoutBtn = document.getElementById('logout-btn');
     const userName = document.getElementById('user-name');
-    const logoHome = document.getElementById('logo-home');
-    const registerLink = document.getElementById('register-link');
 
-    // Open login modal
-    function openLoginModal() {
-      loginModal.classList.add('show');
+    // Toggle Mobile Menu
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('show');
+      menuOverlay.classList.add('show');
       document.body.style.overflow = 'hidden';
-    }
-
-    // Close login modal
-    function closeLoginModal() {
-      loginModal.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    // Toggle mobile menu
-    function toggleMobileMenu() {
-      mobileMenu.classList.toggle('show');
-    }
-
-    // Show dashboard (after login)
-    function showDashboard(username) {
-      landingPage.style.display = 'none';
-      dashboard.style.display = 'block';
-      userName.textContent = username || 'User';
-      closeLoginModal();
-    }
-
-    // Show landing page (logout)
-    function showLandingPage() {
-      dashboard.style.display = 'none';
-      landingPage.style.display = 'block';
-    }
-
-    // Event Listeners
-    loginLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      openLoginModal();
     });
 
-    if (mobileLoginLink) {
-      mobileLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openLoginModal();
-        mobileMenu.classList.remove('show');
-      });
-    }
+    const closeMenu = () => {
+      mobileMenu.classList.remove('show');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    };
 
-    closeModal.addEventListener('click', closeLoginModal);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
 
-    // Close modal when clicking outside
+    // Toggle Login Modal
+    const openLoginModal = () => {
+      loginModal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLoginModal = () => {
+      closeModalBtn.addEventListener('click', closeLoginModal);
+      loginModal.classList.remove('show');
+      document.body.style.overflow = '';
+    };
+
+    loginLink.addEventListener('click', openLoginModal);
+    mobileLoginLink.addEventListener('click', () => {
+      closeMenu();
+      setTimeout(openLoginModal, 300);
+    });
+    closeModalBtn.addEventListener('click', closeLoginModal);
     loginModal.addEventListener('click', (e) => {
       if (e.target === loginModal) {
         closeLoginModal();
       }
     });
 
-    // Login form submission
+    // Form Submission
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const username = email.split('@')[0];
+      userName.textContent = username.charAt(0).toUpperCase() + username.slice(1);
       
-      // Simple validation - in real app, this would go to a server
-      if (email && password) {
-        // Extract username from email
-        const username = email.includes('@') ? email.split('@')[0] : email;
-        showDashboard(username);
-      }
+      closeLoginModal();
+      landingPage.style.display = 'none';
+      dashboard.style.display = 'block';
     });
 
-    // Mobile menu
-    if (mobileMenuIcon) {
-      mobileMenuIcon.addEventListener('click', toggleMobileMenu);
-    }
-
-    if (closeMenu) {
-      closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.remove('show');
-      });
-    }
-
-    // Get Started button
+    // Get Started Button
     getStartedBtn.addEventListener('click', openLoginModal);
 
-    // Logout button
-    logoutBtn.addEventListener('click', showLandingPage);
-
-    // Logo home button
-    logoHome.addEventListener('click', showLandingPage);
-
-    // Register link (for demo, just shows login form)
-    registerLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Registration functionality would be implemented here!');
+    // Logo Home Click
+    logoHome.addEventListener('click', () => {
+      if (dashboard.style.display === 'block') {
+        dashboard.style.display = 'none';
+        landingPage.style.display = 'block';
+      }
     });
 
-    // Indicator dots functionality
-    const dots = document.querySelectorAll('.dot');
-    let currentDot = 1; // Start with the second dot active
-
-    function updateActiveDot() {
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentDot);
-      });
-      currentDot = (currentDot + 1) % dots.length;
-    }
-
-    // Auto-rotate slides every 5 seconds
-    setInterval(updateActiveDot, 5000);
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeLoginModal();
-        mobileMenu.classList.remove('show');
-      }
+    // Logout Button
+    logoutBtn.addEventListener('click', () => {
+      dashboard.style.display = 'none';
+      landingPage.style.display = 'block';
     });
   </script>
 </body>
