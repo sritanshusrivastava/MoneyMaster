@@ -632,6 +632,185 @@
     .logout-button:hover {
       background-color: #e3e3e3;
     }
+
+    
+    /* Enhanced Mobile Menu Styles */
+    .mobile-menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #5f259f;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      z-index: 101;
+    }
+    
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      padding-top: 60px;
+    }
+    
+    .mobile-menu.show {
+      transform: translateX(0);
+      display: block;
+    }
+    
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    .mobile-menu-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      transition: color 0.3s;
+    }
+    
+    .mobile-menu-links a:hover {
+      color: #5f259f;
+    }
+    
+    .close-menu {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #777;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.show {
+      display: block;
+      opacity: 1;
+    }
+
+     /* Footer Section */
+     .footer {
+      background-color: #232333;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #5f259f;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      background-color: #5f259f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .social-icon:hover {
+      background-color: #4a1e7c;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-icon {
+        display: block;
+      }
+      
+      .navbar {
+        position: relative;
+        justify-content: center;
+      }
+      
+      .logo {
+        margin-right: 60px; /* Make space for the menu icon */
+      }
+    }
   </style>
 </head>
 <body>
@@ -649,12 +828,15 @@
       <a href="#">CONTACT US</a>
       <a href="#">TRUST & SAFETY</a>
     </div>
-    <button class="mobile-menu-icon">☰</button>
+    <button class="mobile-menu-icon" id="menu-toggle">☰</button>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <button class="close-menu">×</button>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Enhanced Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-menu" id="close-menu">×</button>
     <div class="mobile-menu-links">
       <a href="#features">OUR SOLUTIONS</a>
       <a href="#">CAREERS</a>
@@ -665,6 +847,64 @@
     </div>
   </div>
 
+  <!-- Rest of your HTML remains the same -->
+  
+  <script>
+    // Existing script content
+    
+    // Enhanced Mobile Menu Functionality
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const mobileLoginLink = document.querySelector('.mobile-login-link');
+    
+    function openMobileMenu() {
+      mobileMenu.classList.add('show');
+      menuOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('show');
+      menuOverlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    
+    menuToggle.addEventListener('click', openMobileMenu);
+    closeMenu.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+    
+    // Close mobile menu when clicking a link
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+    
+    // Mobile login link
+    mobileLoginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+      openLoginModal();
+    });
+    
+    // Close mobile menu with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+      }
+    });
+    
+    // Rest of your script remains the same
+  </script>
+</body>
+</html>
+  </style>
+</head>
+<body>
+  
   <!-- Main Content Area (Landing Page) -->
   <div id="landing-page">
     <!-- Hero Section -->
@@ -762,6 +1002,90 @@
     </section>
   </div>
 
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="app-features">
+      <div class="app-container">
+        <div class="app-content">
+          <h2 class="app-heading">What Our Users Say</h2>
+          <p class="app-description">"MoneyMaster has completely transformed how I manage my finances. The analytics are insightful and the interface is so intuitive!"</p>
+          <p style="font-weight: bold; color: #5f259f;">- Priya M., Software Engineer</p>
+          
+          <div class="divider"></div>
+          
+          <p class="app-description">"I've tried many financial apps, but none compare to the comprehensive features of MoneyMaster. Their expense tracking has helped me save over 15% of my income."</p>
+          <p style="font-weight: bold; color: #5f259f;">- Rahul K., Small Business Owner</p>
+        </div>
+        <div class="app-image">
+          <div class="indicator-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>MoneyMaster</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="#">Personal Finance</a></li>
+          <li><a href="#">Business Solutions</a></li>
+          <li><a href="#">Investment Tracking</a></li>
+          <li><a href="#">Tax Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect With Us</h3>
+        <div class="social-links">
+          <a href="#" class="social-icon">f</a>
+          <a href="#" class="social-icon">in</a>
+          <a href="#" class="social-icon">t</a>
+          <a href="#" class="social-icon">ig</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 14px; color: #aaa;">
+          Download our app:
+        </p>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">App Store</a>
+          <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">Google Play</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
+      <div style="margin-top: 10px;">
+        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
   <!-- Dashboard (hidden initially) -->
   <div id="dashboard" class="dashboard">
     <div class="dashboard-header">
@@ -828,13 +1152,13 @@
   <script>
     // DOM Elements
     const loginLink = document.getElementById('login-link');
-    const mobileLoginLink = document.querySelector('.mobile-login-link');
+    const mobileLoginlink = document.querySelector('.mobile-login-link');
     const loginModal = document.getElementById('login-modal');
     const closeModal = document.getElementById('close-modal');
     const loginForm = document.getElementById('login-form');
     const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const closeMenu = document.querySelector('.close-menu');
+    const mobilemenu = document.querySelector('.mobile-menu');
+    const closemenu = document.querySelector('.close-menu');
     const getStartedBtn = document.getElementById('get-started-btn');
     const landingPage = document.getElementById('landing-page');
     const dashboard = document.getElementById('dashboard');
