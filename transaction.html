@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoneyMaster - Feature Details</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5f259f;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #5f259f;
+    }
+
+    /* Feature Hero Section */
+    .feature-hero {
+      background: linear-gradient(135deg, #e4d5f9 0%, #c4e0f9 100%);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-title {
+      font-size: 48px;
+      color: #5f259f;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-subtitle {
+      font-size: 20px;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dot-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(#5f259f20 2px, transparent 2px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    /* Feature Content */
+    .feature-content {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 32px;
+      color: #5f259f;
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .feature-item {
+      background-color: #f8f9ff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-item-title {
+      font-size: 22px;
+      color: #5f259f;
+      margin-bottom: 15px;
+    }
+
+    .feature-item-text {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #5f259f 0%, #7c3aed 100%);
+      padding: 60px 40px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .cta-text {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      background-color: white;
+      color: #5f259f;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    .back-button {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 30px;
+    }
+
+    .back-button:hover {
+      background-color: #4a1e7c;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      padding: 60px 40px;
+      background-color: #f8f9ff;
+    }
+
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefits-list {
+      margin: 30px 0;
+      padding-left: 20px;
+    }
+
+    .benefits-list li {
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #ddd;
+      margin: 40px 0;
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #232333;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #5f259f;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      background-color: #5f259f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .social-icon:hover {
+      background-color: #4a1e7c;
+    }
+
+    /* Enhanced Mobile Menu Styles */
+    .mobile-menu-icon {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #5f259f;
+      cursor: pointer;
+      z-index: 101;
+    }
+    
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      padding-top: 60px;
+    }
+    
+    .mobile-menu.show {
+      transform: translateX(0);
+      display: block;
+    }
+    
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    .mobile-menu-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      transition: color 0.3s;
+    }
+    
+    .mobile-menu-links a:hover {
+      color: #5f259f;
+    }
+    
+    .close-menu {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #777;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Modal Login Form */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .login-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+      padding: 2rem;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .modal.show .login-container {
+      transform: translateY(0);
+    }
+
+    .login-header {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-header h2 {
+      color: #5f259f;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      margin-top: 10px;
+    } 
+
+    .login-header p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #4c6ef5;
+      outline: none;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-me input {
+      margin-right: 8px; 
+    }
+
+    .forgot-password a {
+      color: #4c6ef5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .login-button {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #4a1e7c;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .register-link a {
+      color: #4c6ef5;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 24px;
+      color: #777;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .faq-answer {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: 20px;
+      }
+      
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        position: relative;
+        justify-content: center;
+        padding: 15px 20px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .logo {
+        margin-right: auto;
+      }
+      
+      .mobile-menu-icon {
+        display: block;
+      }
+      
+      .feature-hero {
+        padding: 60px 20px;
+      }
+      
+      .feature-title {
+        font-size: 36px;
+      }
+      
+      .feature-subtitle {
+        font-size: 18px;
+      }
+      
+      .feature-content,
+      .benefits-section,
+      .faq-section {
+        padding: 40px 20px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .remember-forgot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-title {
+        font-size: 32px;
+      }
+      
+      .cta-title {
+        font-size: 28px;
+      }
+      
+      .cta-text {
+        font-size: 16px;
+      }
+      
+      .login-container {
+        padding: 1.5rem;
+      }
+
+      .login-header h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo" id="logo-home">
+      <div style="width: 40px; height: 40px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
+      <span class="logo-text">MoneyMaster</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#features">OUR SOLUTIONS</a>
+      <a href="#">CAREERS</a>
+      <a href="#">ABOUT US</a>
+      <a href="#" id="login-link">LOGIN</a>
+      <a href="#">CONTACT US</a>
+      <a href="#">TRUST & SAFETY</a>
+    </div>
+    <button class="mobile-menu-icon" id="menu-toggle">☰</button>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+  <!-- Enhanced Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-menu" id="close-menu">×</button>
+    <div class="mobile-menu-links">
+      <a href="index.html#features">OUR SOLUTIONS</a>
+      <a href="#">CAREERS</a>
+      <a href="#">ABOUT US</a>
+      <a href="#" id="mobile-login-link">LOGIN</a>
+      <a href="#">CONTACT US</a>
+      <a href="#">TRUST & SAFETY</a>
+    </div>
+  </div>
+
+  <!-- Feature Hero Section -->
+  <section class="feature-hero">
+    <div class="dot-pattern"></div>
+    <h1 class="feature-title">Transaction Management</h1>
+    <p class="feature-subtitle">Track, manage, and analyze all your financial transactions in one place</p>
+  </section>
+
+  <!-- Feature Content -->
+  <section class="feature-content">
+    <h2 class="section-title">Smart Transaction Management</h2>
+    <p class="section-text">MoneyMaster's Transaction Management system gives you complete visibility and control over your financial activities. Our intelligent platform automatically categorizes transactions, detects patterns, and provides insights to help you make better financial decisions.</p>
+    
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 100 100">
+            <rect x="20" y="20" width="60" height="60" rx="5" fill="#e6e6ff" />
+            <path d="M30 40 L70 40" stroke="#5f259f" stroke-width="4" stroke-linecap="round" />
+            <path d="M30 50 L70 50" stroke="#5f259f" stroke-width="4" stroke-linecap="round" />
+            <path d="M30 60 L60 60" stroke="#5f259f" stroke-width="4" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3 class="feature-item-title">Automatic Categorization</h3>
+        <p class="feature-item-text">Our AI-powered system automatically categorizes your transactions, making it easy to track spending across different categories.</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="30" fill="#e6e6ff" />
+            <path d="M40 50 L47 57 L60 43" stroke="#5f259f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+        </div>
+        <h3 class="feature-item-title">Real-time Alerts</h3>
+        <p class="feature-item-text">Get instant notifications for unusual transactions, large purchases, or when you're close to exceeding your budget limits.</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 100 100">
+            <path d="M30 70 L30 40 L50 30 L70 40 L70 70 Z" fill="#e6e6ff" />
+            <path d="M30 40 L50 50 L70 40" stroke="#5f259f" stroke-width="2" fill="none" />
+            <path d="M50 50 L50 70" stroke="#5f259f" stroke-width="2" fill="none" />
+          </svg>
+        </div>
+        <h3 class="feature-item-title">Multi-account Integration</h3>
+        <p class="feature-item-text">Connect all your bank accounts, credit cards, and digital wallets for a complete view of your transactions across all platforms.</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 100 100">
+            <rect x="20" y="30" width="60" height="40" rx="5" fill="#e6e6ff" />
+            <circle cx="50" cy="50" r="12" fill="#5f259f" />
+            <circle cx="50" cy="50" r="5" fill="#ffffff" />
+          </svg>
+        </div>
+        <h3 class="feature-item-title">Search & Filter</h3>
+        <p class="feature-item-text">Powerful search and filter capabilities let you quickly find specific transactions by date, amount, category, or vendor.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="benefits-container">
+      <h2 class="section-title">Key Benefits</h2>
+      <p class="section-text">Our Transaction Management feature provides numerous advantages to help you take control of your finances:</p>
+      
+      <ul class="benefits-list">
+        <li><strong>Complete Financial Visibility:</strong> See all your transactions in one place with detailed breakdowns and categorization.</li>
+        <li><strong>Simplified Record Keeping:</strong> Easily track tax-deductible expenses and generate reports for tax season.</li>
+        <li><strong>Fraud Detection:</strong> Our system flags suspicious activities and helps you identify unauthorized transactions quickly.</li>
+        <li><strong>Spending Insights:</strong> Understand your spending habits with visual reports and actionable recommendations.</li>
+        <li><strong>Easy Reconciliation:</strong> Match transactions with your budget and financial plans to ensure you're on track.</li>
+        <li><strong>Historical Analysis:</strong> Review past transactions and identify trends to improve future financial decisions.</li>
+      </ul>
+      
+      <div class="divider"></div>
+      
+      <a href="index.html" class="back-button">Back to Home</a>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">How secure is my transaction data?</h3>
+      <p class="faq-answer">We use bank-level 256-bit encryption to secure all your data. Our system is SOC2 compliant and we never store your bank credentials on our servers. Your security is our top priority.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">Can I manually add transactions?</h3>
+      <p class="faq-answer">Yes! While our system automatically captures transactions from connected accounts, you can also manually add cash transactions or transactions from accounts that aren't connected.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">How far back can I see my transaction history?</h3>
+      <p class="faq-answer">MoneyMaster stores your transaction history indefinitely, allowing you to access and analyze years of financial data as long as you maintain your account.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">Can I export my transaction data?</h3>
+      <p class="faq-answer">Absolutely! You can export your transaction data in multiple formats including CSV, PDF, and Excel for your record-keeping or tax preparation needs.</p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2 class="cta-title">Ready to Take Control of Your Transactions?</h2>
+    <p class="cta-text">Join thousands of users who are managing their finances more effectively with MoneyMaster's powerful transaction management tools.</p>
+    <a href="#" class="cta-button" id="cta-get-started">Get Started Today</a>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>MoneyMaster</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="#">Personal Finance</a></li>
+          <li><a href="#">Business Solutions</a></li>
+          <li><a href="#">Investment Tracking</a></li>
+          <li><a href="#">Tax Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect With Us</h3>
+        <div class="social-links">
+          <a href="#" class="social-icon">f</a>
+          <a href="#" class="social-icon">in</a>
+          <a href="#" class="social-icon">t</a>
+          <a href="#" class="social-icon">ig</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 14px; color: #aaa;">
+          Download our app:
+        </p>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">App Store</a>
+          <a href="#" style="display: block; background: #333; color: white; padding: 8px 12px; border-radius: 5px; text-decoration: none; font-size: 12px;">Google Play</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
+      <div style="margin-top: 10px;">
+        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        <a href="#" style="color: #aaa; text-decoration: none; margin: 0 10px;">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal" id="login-modal">
+    <div class="login-container">
+      <button class="close-modal" id="close-modal">×</button>
+      <div class="login-header">
+        <div style="width: 50px; height: 50px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
+        <h2>Welcome Back</h2>
+        <p>Please login to your account</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="remember-forgot">
+            <div class="remember-me">
+              <input type="checkbox" id="remember-me">
+              <label for="remember-me">Remember me</label>
+            </div>
+            <div class="forgot-password">
+              <a href="#">Forgot Password?</a>
+            </div>
+          </div>
+          <button type="submit" class="login-button">Login</button>
+          <div class="register-link">
+            <p>Don't have an account? <a href="#">Register Now</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- JavaScript for Interactive Elements -->
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuOverlay = document.getElementById('menu-overlay');
+      const closeMenu = document.getElementById('close-menu');
+      
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.add('show');
+        menuOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      function closeMenuFunction() {
+        mobileMenu.classList.remove('show');
+        menuOverlay.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+      
+      closeMenu.addEventListener('click', closeMenuFunction);
+      menuOverlay.addEventListener('click', closeMenuFunction);
+      
+      // Login Modal
+      const loginLink = document.getElementById('login-link');
+      const mobileLoginLink = document.getElementById('mobile-login-link');
+      const loginModal = document.getElementById('login-modal');
+      const closeModal = document.getElementById('close-modal');
+      const ctaGetStarted = document.getElementById('cta-get-started');
+      
+      function openLoginModal() {
+        loginModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeLoginModal() {
+        loginModal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+      
+      loginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLoginModal();
+      });
+      
+      mobileLoginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMenuFunction();
+        openLoginModal();
+      });
+      
+      ctaGetStarted.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLoginModal();
+      });
+      
+      closeModal.addEventListener('click', closeLoginModal);
+      
+      loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) {
+          closeLoginModal();
+        }
+      });
+      
+      // Form Submission Handling
+      const loginForm = document.getElementById('login-form');
+      
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Here you would typically send the data to a server
+        console.log('Login attempted with:', { email });
+        
+        // For demo purposes, just close the modal after submission
+        alert('Login functionality would be implemented in a real application. This is just a demo.');
+        closeLoginModal();
+      });
+      
+      // Logo click for home navigation
+      const logoHome = document.getElementById('logo-home');
+      logoHome.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+  </html>

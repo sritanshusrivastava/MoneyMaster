@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Management - MoneyMaster</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5f259f;
+      margin-left: 8px;
+    }
+
+    .back-btn {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #4a1e7c;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #e4d5f9 0%, #c4e0f9 100%);
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-heading {
+      font-size: 48px;
+      color: #333;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero-subheading {
+      font-size: 20px;
+      color: #444;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dot-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(#5f259f20 2px, transparent 2px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 40px;
+    }
+
+    .features-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: #f8f9ff;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(95, 37, 159, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 4rem;
+      margin-bottom: 25px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 24px;
+      color: #5f259f;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .feature-description {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .feature-benefits {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    .feature-benefits li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 25px;
+      color: #666;
+    }
+
+    .feature-benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #5f259f;
+      font-weight: bold;
+    }
+
+    .cta-button {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #4a1e7c;
+      transform: translateY(-2px);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background-color: #fcfcfc;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .stats-title {
+      font-size: 42px;
+      color: #5f259f;
+      margin-bottom: 50px;
+      font-weight: bold;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      background-color: white;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #5f259f;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #232333;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #5f259f;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero-heading {
+        font-size: 36px;
+      }
+
+      .hero-subheading {
+        font-size: 18px;
+      }
+
+      .features {
+        padding: 60px 20px;
+      }
+
+      .features-container {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 30px 20px;
+      }
+
+      .stats-section {
+        padding: 60px 20px;
+      }
+
+      .stats-title {
+        font-size: 32px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo" onclick="window.location.href='index.html'">
+      <div style="width: 40px; height: 40px; background-color: #5f259f; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">M</div>
+      <span class="logo-text">MoneyMaster</span>
+    </div>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="dot-pattern"></div>
+    <div class="hero-content">
+      <h1 class="hero-heading">Financial Management</h1>
+      <p class="hero-subheading">Take complete control of your finances with our comprehensive management tools designed for modern financial planning and wealth building</p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="features-container">
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3 class="feature-title">Budget Planning</h3>
+        <p class="feature-description">Create and manage personalized budgets with intelligent spending categories and automatic tracking.</p>
+        <ul class="feature-benefits">
+          <li>Smart budget allocation</li>
+          <li>Real-time spending alerts</li>
+          <li>Category-wise analysis</li>
+          <li>Monthly/yearly comparisons</li>
+        </ul>
+        <button class="cta-button">Start Planning</button>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3 class="feature-title">Goal Setting</h3>
+        <p class="feature-description">Set and achieve your financial goals with our smart tracking and milestone management system.</p>
+        <ul class="feature-benefits">
+          <li>Customizable financial goals</li>
+          <li>Progress visualization</li>
+          <li>Milestone celebrations</li>
+          <li>Automatic savings plans</li>
+        </ul>
+        <button class="cta-button">Set Goals</button>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <h3 class="feature-title">Investment Tracking</h3>
+        <p class="feature-description">Monitor your investment portfolio with real-time updates and comprehensive performance analytics.</p>
+        <ul class="feature-benefits">
+          <li>Portfolio diversification</li>
+          <li>Risk assessment tools</li>
+          <li>Performance benchmarking</li>
+          <li>Market trend analysis</li>
+        </ul>
+        <button class="cta-button">Track Investments</button>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔒</span>
+        <h3 class="feature-title">Debt Management</h3>
+        <p class="feature-description">Strategically manage and eliminate debt with our smart payoff calculators and planning tools.</p>
+        <ul class="feature-benefits">
+          <li>Debt consolidation options</li>
+          <li>Payoff strategies</li>
+          <li>Interest optimization</li>
+          <li>Credit score monitoring</li>
+        </ul>
+        <button class="cta-button">Manage Debt</button>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">📱</span>
+        <h3 class="feature-title">Mobile Banking</h3>
+        <p class="feature-description">Access all your accounts in one place with secure mobile banking integration and instant notifications.</p>
+        <ul class="feature-benefits">
+          <li>Multi-bank connectivity</li>
+          <li>Instant transaction alerts</li>
+          <li>Secure authentication</li>
+          <li>Offline access</li>
+        </ul>
+        <button class="cta-button">Connect Banks</button>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <h3 class="feature-title">AI Insights</h3>
+        <p class="feature-description">Get personalized financial advice and predictions powered by advanced machine learning algorithms.</p>
+        <ul class="feature-benefits">
+          <li>Spending pattern analysis</li>
+          <li>Personalized recommendations</li>
+          <li>Future cash flow predictions</li>
+          <li>Anomaly detection</li>
+        </ul>
+        <button class="cta-button">Get Insights</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <h2 class="stats-title">Financial Management by the Numbers</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">87%</span>
+        <span class="stat-label">Better Budget Control</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">₹2.3L</span>
+        <span class="stat-label">Average Annual Savings</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">95%</span>
+        <span class="stat-label">Goal Achievement Rate</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Real-time Monitoring</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>MoneyMaster</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="#">Personal Finance</a></li>
+          <li><a href="#">Business Solutions</a></li>
+          <li><a href="#">Investment Tracking</a></li>
+          <li><a href="#">Tax Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect With Us</h3>
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+          <a href="#" style="width: 36px; height: 36px; background-color: #5f259f; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background-color 0.3s;">f</a>
+          <a href="#" style="width: 36px; height: 36px; background-color: #5f259f; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background-color 0.3s;">in</a>
+          <a href="#" style="width: 36px; height: 36px; background-color: #5f259f; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: background-color 0.3s;">t</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
