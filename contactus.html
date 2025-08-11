@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - MoneyMaster</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      background-color: #5f259f;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5f259f;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #5f259f;
+    }
+
+    .nav-links a.active {
+      color: #5f259f;
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #e4d5f9 0%, #c4e0f9 100%);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dot-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(#5f259f20 2px, transparent 2px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-heading {
+      font-size: 48px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero-subheading {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #5f259f;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(95, 37, 159, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #4a1e7c;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Contact Info */
+    .contact-info {
+      padding: 20px;
+    }
+
+    .info-title {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .info-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+
+    .contact-methods {
+      margin-bottom: 50px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      padding: 20px;
+      background-color: #f8f9ff;
+      border-radius: 15px;
+      transition: transform 0.3s;
+    }
+
+    .contact-method:hover {
+      transform: translateX(10px);
+    }
+
+    .method-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #5f259f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      margin-right: 20px;
+    }
+
+    .method-info h3 {
+      color: #333;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .method-info p {
+      color: #666;
+      margin: 0;
+    }
+
+    .method-info a {
+      color: #5f259f;
+      text-decoration: none;
+    }
+
+    .method-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Office Locations */
+    .office-locations {
+      margin-bottom: 50px;
+    }
+
+    .office-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .office-item {
+      background-color: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .office-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .office-name {
+      font-size: 18px;
+      color: #5f259f;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .office-address {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: 60px;
+    }
+
+    .faq-title {
+      font-size: 32px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .faq-item {
+      background-color: white;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      background-color: #f8f9ff;
+      padding: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover {
+      background-color: #e8e9ff;
+    }
+
+    .faq-question h3 {
+      color: #333;
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .faq-toggle {
+      color: #5f259f;
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+      background-color: white;
+    }
+
+    .faq-answer.active {
+      padding: 20px;
+      max-height: 200px;
+    }
+
+    .faq-answer p {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #232333;
+      color: #fff;
+      padding: 60px 40px 30px;
+      margin-top: 80px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #5f259f;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* Success Message */
+    .success-message {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: none;
+      text-align: center;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero-heading {
+        font-size: 36px;
+      }
+
+      .main-content {
+        padding: 60px 20px;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contact-form {
+        padding: 30px 20px;
+      }
+
+      .form-title,
+      .info-title,
+      .faq-title {
+        font-size: 28px;
+      }
+
+      .contact-method:hover {
+        transform: none;
+      }
+
+      .office-item:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-circle">M</div>
+      <span class="logo-text">MoneyMaster</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">OUR SOLUTIONS</a>
+      <a href="careers.html">CAREERS</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="index.html">LOGIN</a>
+      <a href="contact.html" class="active">CONTACT US</a>
+      <a href="trust-safety.html">TRUST & SAFETY</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="dot-pattern"></div>
+    <div class="hero-content">
+      <h1 class="hero-heading">Get in Touch</h1>
+      <p class="hero-subheading">Have questions about MoneyMaster? We're here to help. Reach out to our team for support, partnerships, or just to say hello.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <div class="success-message" id="success-message">
+          Thank you for your message! We'll get back to you within 24 hours.
+        </div>
+        <h2 class="form-title">Send us a Message</h2>
+        <p class="form-subtitle">Fill out the form below and we'll respond as quickly as possible.</p>
+        
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="support">Technical Support</option>
+              <option value="billing">Billing Question</option>
+              <option value="partnership">Partnership</option>
+              <option value="feature">Feature Request</option>
+              <option value="bug">Bug Report</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Tell us more about your inquiry..." required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <h2 class="info-title">Contact Information</h2>
+        <p class="info-description">We're always here to help. Choose the best way to reach us.</p>
+        
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="method-icon">📞</div>
+            <div class="method-info">
+              <h3>Phone Support</h3>
+              <p><a href="tel:+911800123456">+91 1800 123 456</a></p>
+              <p>Mon-Fri, 9:00 AM - 6:00 PM IST</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="method-icon">✉️</div>
+            <div class="method-info">
+              <h3>Email Support</h3>
+              <p><a href="mailto:support@moneymaster.com">support@moneymaster.com</a></p>
+              <p>We respond within 24 hours</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="method-icon">💬</div>
+            <div class="method-info">
+              <h3>Live Chat</h3>
+              <p>Available in the app</p>
+              <p>Mon-Fri, 9:00 AM - 8:00 PM IST</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="method-icon">🏢</div>
+            <div class="method-info">
+              <h3>Business Inquiries</h3>
+              <p><a href="mailto:business@moneymaster.com">business@moneymaster.com</a></p>
+              <p>Partnerships & Enterprise</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="office-locations">
+          <h3 class="office-title">Our Offices</h3>
+          
+          <div class="office-item">
+            <div class="office-name">Headquarters - Bangalore</div>
+            <div class="office-address">
+              123 Tech Park Road,<br>
+              Electronic City, Bangalore 560100<br>
+              Karnataka, India
+            </div>
+          </div>
+          
+          <div class="office-item">
+            <div class="office-name">Mumbai Office</div>
+            <div class="office-address">
+              456 Business District,<br>
+              Bandra Kurla Complex, Mumbai 400051<br>
+              Maharashtra, India
+            </div>
+          </div>
+          
+          <div class="office-item">
+            <div class="office-name">Delhi Office</div>
+            <div class="office-address">
+              789 Corporate Tower,<br>
+              Cyber City, Gurgaon 122002<br>
+              Haryana, India
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How do I reset my password?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>You can reset your password by clicking on "Forgot Password" on the login page, or by going to Settings > Security in your app and selecting "Change Password".</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Is my financial data secure?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, we use bank-level 256-bit SSL encryption and never store your banking credentials. All data is encrypted both in transit and at rest, and we're compliant with industry security standards.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>What devices does MoneyMaster support?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>MoneyMaster is available on iOS, Android, and as a web application. You can access your account from any device with internet connectivity.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How much does MoneyMaster cost?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We offer a free tier with basic features, and premium plans starting at ₹99/month with advanced analytics, investment tracking, and priority support.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I connect multiple bank accounts?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, you can connect multiple bank accounts, credit cards, and investment accounts to get a complete view of your finances in one place.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Do you offer business accounts?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, we offer MoneyMaster for Business with features tailored for small to medium enterprises, including expense management, invoicing, and team collaboration tools.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>MoneyMaster</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="#">Personal Finance</a></li>
+          <li><a href="#">Business Solutions</a></li>
+          <li><a href="#">Investment Tracking</a></li>
+          <li><a href="#">Tax Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="trust-safety.html">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="trust-safety.html">Trust & Safety</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Form submission handling
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.querySelector('.submit-btn');
+      const successMessage = document.getElementById('success-message');
+      
+      // Simulate form submission
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        successMessage.style.display = 'block';
+        this.reset();
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    });
+
+    // FAQ toggle functionality
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const toggle = element.querySelector('.faq-toggle');
+      const isActive = answer.classList.contains('active');
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-answer').forEach(item => {
+        item.classList.remove('active');
+      });
+      document.querySelectorAll('.faq-toggle').forEach(item => {
+        item.textContent = '+';
+      });
+      
+      // Toggle current FAQ
+      if (!isActive) {
+        answer.classList.add('active');
+        toggle.textContent = '−';
+      }
+    }
+
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form validation enhancements
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', function() {
+        if (this.hasAttribute('required') && !this.value.trim()) {
+          this.style.borderColor = '#ff6b6b';
+        } else {
+          this.style.borderColor = '#e0e0e0';
+        }
+      });
+
+      input.addEventListener('input', function() {
+        if (this.style.borderColor === 'rgb(255, 107, 107)') {
+          this.style.borderColor = '#e0e0e0';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

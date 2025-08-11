@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers - MoneyMaster</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      background-color: #5f259f;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5f259f;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #5f259f;
+    }
+
+    .nav-links a.active {
+      color: #5f259f;
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #e4d5f9 0%, #c4e0f9 100%);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dot-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: radial-gradient(#5f259f20 2px, transparent 2px);
+      background-size: 30px 30px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-heading {
+      font-size: 48px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero-subheading {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      color: #5f259f;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #666;
+      text-align: center;
+    }
+
+    /* Job Listings */
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .job-card {
+      background-color: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #f0f0f0;
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(95, 37, 159, 0.15);
+    }
+
+    .job-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .job-department {
+      color: #5f259f;
+      font-weight: 500;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .job-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .job-requirements {
+      margin-bottom: 20px;
+    }
+
+    .job-requirements h4 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .job-requirements ul {
+      color: #666;
+      padding-left: 20px;
+    }
+
+    .job-requirements li {
+      margin-bottom: 5px;
+    }
+
+    .apply-btn {
+      background-color: #5f259f;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .apply-btn:hover {
+      background-color: #4a1e7c;
+    }
+
+    /* Values Section */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #f8f9ff;
+      border-radius: 16px;
+      transition: transform 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .value-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #5f259f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 32px;
+    }
+
+    .value-title {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .value-description {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #232333;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #5f259f;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero-heading {
+        font-size: 36px;
+      }
+
+      .main-content {
+        padding: 60px 20px;
+      }
+
+      .section h2 {
+        font-size: 28px;
+      }
+
+      .job-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <div class="logo-circle">M</div>
+      <span class="logo-text">MoneyMaster</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">OUR SOLUTIONS</a>
+      <a href="careers.html" class="active">CAREERS</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="index.html">LOGIN</a>
+      <a href="contact.html">CONTACT US</a>
+      <a href="trust-safety.html">TRUST & SAFETY</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="dot-pattern"></div>
+    <div class="hero-content">
+      <h1 class="hero-heading">Join Our Team</h1>
+      <p class="hero-subheading">Help us revolutionize financial management and make a difference in people's financial lives. Join a team of passionate individuals building the future of finance.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Why Work With Us Section -->
+    <section class="section">
+      <h2>Why Work With Us?</h2>
+      <div class="section-content">
+        <p>At MoneyMaster, we believe that great products are built by great people. We're looking for talented individuals who share our passion for innovation, excellence, and making financial management accessible to everyone. Join us in building tools that empower millions of users to take control of their financial future.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🚀</div>
+          <h3 class="value-title">Innovation First</h3>
+          <p class="value-description">We encourage creative thinking and provide resources to turn innovative ideas into reality.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <h3 class="value-title">Collaborative Culture</h3>
+          <p class="value-description">Work with cross-functional teams in an environment that values diverse perspectives.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">📈</div>
+          <h3 class="value-title">Growth Opportunities</h3>
+          <p class="value-description">Advance your career with mentorship, training, and challenging projects that push your limits.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚖️</div>
+          <h3 class="value-title">Work-Life Balance</h3>
+          <p class="value-description">Flexible working arrangements and comprehensive benefits to support your well-being.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Positions Section -->
+    <section class="section">
+      <h2>Open Positions</h2>
+      <div class="job-grid">
+        <div class="job-card">
+          <h3 class="job-title">Senior Software Engineer</h3>
+          <p class="job-department">Engineering</p>
+          <p class="job-description">Lead the development of scalable financial applications using modern technologies. Work on critical features that impact millions of users daily.</p>
+          <div class="job-requirements">
+            <h4>Requirements:</h4>
+            <ul>
+              <li>5+ years of software development experience</li>
+              <li>Proficiency in React, Node.js, and cloud platforms</li>
+              <li>Experience with financial APIs and security protocols</li>
+              <li>Strong problem-solving and communication skills</li>
+            </ul>
+          </div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+          <h3 class="job-title">UX/UI Designer</h3>
+          <p class="job-department">Design</p>
+          <p class="job-description">Create intuitive and beautiful user experiences for our financial management platform. Drive design decisions that make complex financial data accessible.</p>
+          <div class="job-requirements">
+            <h4>Requirements:</h4>
+            <ul>
+              <li>3+ years of UX/UI design experience</li>
+              <li>Proficiency in Figma, Sketch, and design systems</li>
+              <li>Experience with fintech or financial applications</li>
+              <li>Strong portfolio showcasing user-centered design</li>
+            </ul>
+          </div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+          <h3 class="job-title">Product Manager</h3>
+          <p class="job-department">Product</p>
+          <p class="job-description">Drive product strategy and roadmap for our core financial management features. Work closely with engineering and design to deliver impactful solutions.</p>
+          <div class="job-requirements">
+            <h4>Requirements:</h4>
+            <ul>
+              <li>4+ years of product management experience</li>
+              <li>Experience with fintech or financial services</li>
+              <li>Strong analytical and data-driven decision making</li>
+              <li>Excellent stakeholder management skills</li>
+            </ul>
+          </div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+          <h3 class="job-title">Data Scientist</h3>
+          <p class="job-department">Data & Analytics</p>
+          <p class="job-description">Build ML models and analytics solutions to provide personalized financial insights. Help users make better financial decisions through data-driven recommendations.</p>
+          <div class="job-requirements">
+            <h4>Requirements:</h4>
+            <ul>
+              <li>3+ years in data science or machine learning</li>
+              <li>Proficiency in Python, SQL, and ML frameworks</li>
+              <li>Experience with financial data and modeling</li>
+              <li>Strong statistical analysis skills</li>
+            </ul>
+          </div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+          <h3 class="job-title">Customer Success Manager</h3>
+          <p class="job-department">Customer Experience</p>
+          <p class="job-description">Ensure customer satisfaction and drive product adoption. Work directly with users to understand their needs and help them achieve their financial goals.</p>
+          <div class="job-requirements">
+            <h4>Requirements:</h4>
+            <ul>
+              <li>3+ years in customer success or account management</li>
+              <li>Experience with SaaS or fintech products</li>
+              <li>Strong communication and interpersonal skills</li>
+              <li>Data-driven approach to customer success</li>
+            </ul>
+          </div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+          <h3 class="job-title">Security Engineer</h3>
+          <p class="job-department">Security</p>
+          <p class="job-description">Protect our platform and user data through robust security practices. Implement security measures and respond to emerging threats in the financial sector.</p>
+          <div class="job-requirements">
+            <h4>Requirements:</h4>
+            <ul>
+              <li>4+ years in cybersecurity or information security</li>
+              <li>Experience with financial services security standards</li>
+              <li>Knowledge of encryption, authentication, and compliance</li>
+              <li>Security certifications preferred (CISSP, CISM, etc.)</li>
+            </ul>
+          </div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Process Section -->
+    <section class="section">
+      <h2>Our Hiring Process</h2>
+      <div class="section-content">
+        <p>We believe in a fair and transparent hiring process that allows candidates to showcase their skills while getting to know our team and culture.</p>
+        <br>
+        <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+          <p><strong>1. Application Review:</strong> We review your application and portfolio within 3-5 business days.</p>
+          <p><strong>2. Initial Screening:</strong> A brief call with our HR team to discuss your background and interests.</p>
+          <p><strong>3. Technical/Skill Assessment:</strong> Role-specific evaluation to assess your technical or domain expertise.</p>
+          <p><strong>4. Team Interviews:</strong> Meet with team members and hiring managers to discuss collaboration and fit.</p>
+          <p><strong>5. Final Decision:</strong> We'll make a decision within a week and provide feedback regardless of the outcome.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>MoneyMaster</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul class="footer-links">
+          <li><a href="#">Personal Finance</a></li>
+          <li><a href="#">Business Solutions</a></li>
+          <li><a href="#">Investment Tracking</a></li>
+          <li><a href="#">Tax Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="trust-safety.html">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="trust-safety.html">Trust & Safety</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MoneyMaster. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Add smooth scrolling for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add loading animation for apply buttons
+    document.querySelectorAll('.apply-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const originalText = this.textContent;
+        this.textContent = 'Applying...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+          this.textContent = 'Application Submitted!';
+          this.style.backgroundColor = '#4CAF50';
+          
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.disabled = false;
+            this.style.backgroundColor = '#5f259f';
+          }, 2000);
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
